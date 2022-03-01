@@ -15,7 +15,7 @@ class ColorTest {
     @BeforeEach
     void setUp() {
         color1 = new Color(100,100,45);
-        color2 = new Color("#0000FF");
+        //color2 = new Color("0000FF");
     }
 
 
@@ -36,12 +36,12 @@ class ColorTest {
 
     @Test
     void testConstruc_rangeColors(){
-        assertThrows(IllegalArgumentException.class, () -> color1 = new Color(4,200,50));
+        assertThrows(IllegalArgumentException.class, () -> color1 = new Color(-1,200,50));
     }
 
     @Test
     void testConstruc_hexa(){
-        assertEquals("0000FF", color2.hexa, "valeur du constructeur non identique");
+        assertThrows(IllegalArgumentException.class, () -> color2 = new Color("0000PP"));
     }
 
 

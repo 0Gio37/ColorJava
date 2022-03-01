@@ -37,7 +37,7 @@ public class Color {
         p = Pattern.compile("^#[0-9A-F]{6}");
         m = p.matcher(hexa);
         if(!m.matches()){
-            throw new IllegalArgumentException("le format n'est pas le bon");
+            throw new IllegalArgumentException("le format hexa n'est pas le bon");
         }else{
             this.hexa = hexa;
         }
