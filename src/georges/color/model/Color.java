@@ -40,7 +40,7 @@ public class Color {
         }
     }
 
-    public void validStringConstructor(){
+    public void validFormatConstructor(){
         Pattern p;
         Matcher m;
         p = Pattern.compile("^#[0-9]{4}[A-F]{2}");
@@ -49,7 +49,7 @@ public class Color {
             throw new IllegalArgumentException("le format n'est pas le bon");
         }
 
-        
+
     }
 
 
