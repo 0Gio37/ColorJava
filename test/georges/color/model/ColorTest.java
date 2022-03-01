@@ -54,9 +54,11 @@ class ColorTest {
     }
 
     @Test
-    void testSetRed(){
-        assertEquals(400, color1.setRed(400),"la valeur du rouge n'a pas été setée");
-        assertEquals(400,color1.getRed(),"le get du rouge apres son set n'a pas la bonne valeur ");
+    void testSetRed() {
+        color1.setRed(400);
+        assertAll("objet non conforme",
+                () -> assertEquals(400, color1.getRed(), "le get du rouge apres son set n'a pas la bonne valeur "));
+        //assertEquals(400, color1.setRed(400), "la valeur du rouge n'a pas été setée");
     }
 
     @Test
@@ -66,8 +68,11 @@ class ColorTest {
 
     @Test
     void testSetGreen(){
-        assertEquals(100, color1.setGreen(100),"la valeur du vert n'a pas été setée");
-        assertEquals(100,color1.getGreen(),"le get du vert apres son set n'a pas la bonne valeur ");
+        color1.setGreen(100);
+        assertAll("objet non conforome",
+                () -> assertEquals(100,color1.getGreen(),"le get du vert apres son set n'a pas la bonne valeur "));
+        //assertEquals(100, color1.setGreen(100),"la valeur du vert n'a pas été setée");
+
     }
 
     @Test
@@ -77,9 +82,22 @@ class ColorTest {
 
     @Test
     void testSetBlue(){
-        assertEquals(50, color1.setBlue(50),"la valeur du bleu n'a pas été setée");
-        assertEquals(50,color1.getBlue(),"le get du bleu apres son set n'a pas la bonne valeur ");
+        color1.setBlue(20);
+        assertAll("object non conforme",
+               // () -> assertEquals(50, color1.setBlue(50),"la valeur du bleu n'a pas été setée"),
+                () -> assertEquals(20,color1.getBlue(),"le get du bleu apres son set n'a pas la bonne valeur "));
     }
+
+    @Test
+    void testGetHexavalue(){
+        assertEquals("0000FF", color2.getHexaValue(), "la valeur de l'hexa n'est pas récupérée");
+    }
+
+    @Test
+    void testSetHexaValue(){
+        assertEquals("#00FF00", color2.setHexaValue("#00FF00"),"le get de l'hexa apres son set n'a pas la bonne valeur ");
+    }
+
 
 
 

@@ -30,13 +30,13 @@ public class Color {
 
     public void validArgVert(){
         if(vert < 0 || vert > 255){
-            throw new IllegalArgumentException("rouge n'est pas un chiffre compris entre 0 et 255");
+            throw new IllegalArgumentException("vert n'est pas un chiffre compris entre 0 et 255");
         }
     }
 
     public void validArgBleu(){
         if(bleu < 0 || bleu > 255){
-            throw new IllegalArgumentException("rouge n'est pas un chiffre compris entre 0 et 255");
+            throw new IllegalArgumentException("bleu n'est pas un chiffre compris entre 0 et 255");
         }
     }
 
@@ -53,24 +53,33 @@ public class Color {
     public int getRed(){
         return rouge;
     }
-    public int setRed(int newColor){
+    public void setRed(int newColor){
         this.rouge = newColor;
-        return rouge;
     }
+    
     public int getGreen(){
         return vert;
     }
-    public int setGreen(int newColor){
+    public void setGreen(int newColor){
         this.vert = newColor;
-        return vert;
     }
+
     public int getBlue(){
         return bleu;
     }
-    public int setBlue(int newColor){
+
+    public void setBlue(int newColor){
         this.bleu = newColor;
-        return bleu;
     }
+
+  public String getHexaValue(){
+        return hexa;
+  }
+
+  public String setHexaValue(String newValue){
+        this.hexa = newValue;
+        return hexa;
+  }
 
 
 
