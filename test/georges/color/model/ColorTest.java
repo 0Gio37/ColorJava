@@ -56,6 +56,7 @@ class ColorTest {
     @Test
     void testSetRed(){
         assertEquals(400, color1.setRed(400),"la valeur du rouge n'a pas été setée");
+        assertEquals(400,color1.getRed(),"le get du rouge apres son set n'a pas la bonne valeur ");
     }
 
     @Test
@@ -66,16 +67,18 @@ class ColorTest {
     @Test
     void testSetGreen(){
         assertEquals(100, color1.setGreen(100),"la valeur du vert n'a pas été setée");
+        assertEquals(100,color1.getGreen(),"le get du vert apres son set n'a pas la bonne valeur ");
     }
 
     @Test
-    void testGetBlue(){
-        assertEquals(-1,color1.getBlue(),"la valeur du bleu n'est pas récupérée");
+    void testGetBlue() {
+        assertEquals(-1, color1.getBlue(), "la valeur du bleu n'est pas récupérée");
     }
 
     @Test
     void testSetBlue(){
         assertEquals(50, color1.setBlue(50),"la valeur du bleu n'a pas été setée");
+        assertEquals(50,color1.getBlue(),"le get du bleu apres son set n'a pas la bonne valeur ");
     }
 
 
