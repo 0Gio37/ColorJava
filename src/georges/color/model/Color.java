@@ -13,42 +13,36 @@ public class Color {
     public String hexa;
 
     public Color(int rouge, int vert, int bleu){
-        this.rouge = rouge;
-        this.vert =  vert;
-        this.bleu = bleu;
-    }
-
-    public Color(String hexa){
-        this.hexa = hexa;
-    }
-
-    public void validArgRouge() {
         if (rouge < 0 || rouge > 255) {
             throw new IllegalArgumentException("rouge n'est pas un chiffre compris entre 0 et 255");
+        }else{
+            this.rouge = rouge;
         }
-    }
-
-    public void validArgVert(){
-        if(vert < 0 || vert > 255){
+        if (vert < 0 || vert > 255) {
             throw new IllegalArgumentException("vert n'est pas un chiffre compris entre 0 et 255");
+        }else{
+            this.vert = vert;
         }
-    }
-
-    public void validArgBleu(){
-        if(bleu < 0 || bleu > 255){
+        if (bleu < 0 || bleu > 255) {
             throw new IllegalArgumentException("bleu n'est pas un chiffre compris entre 0 et 255");
+        }else{
+            this.bleu = bleu;
         }
     }
 
-    public void validFormatConstructor(){
+
+    public Color(String hexa){
         Pattern p;
         Matcher m;
         p = Pattern.compile("^#[0-9A-F]{6}");
         m = p.matcher(hexa);
         if(!m.matches()){
             throw new IllegalArgumentException("le format n'est pas le bon");
+        }else{
+            this.hexa = hexa;
         }
     }
+
 
     public int getRed(){
         return rouge;
@@ -56,7 +50,7 @@ public class Color {
     public void setRed(int newColor){
         this.rouge = newColor;
     }
-    
+
     public int getGreen(){
         return vert;
     }
@@ -79,6 +73,11 @@ public class Color {
   public String setHexaValue(String newValue){
         this.hexa = newValue;
         return hexa;
+  }
+
+  public String toString(){
+        return "value="+hexa;
+
   }
 
 
