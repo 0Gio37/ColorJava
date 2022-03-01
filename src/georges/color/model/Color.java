@@ -2,6 +2,8 @@ package georges.color.model;
 
 import java.awt.geom.IllegalPathStateException;
 import java.rmi.server.ExportException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Color {
 
@@ -39,7 +41,15 @@ public class Color {
     }
 
     public void validStringConstructor(){
+        Pattern p;
+        Matcher m;
+        p = Pattern.compile("^#[0-9]{4}[A-F]{2}");
+        m = p.matcher(hexa);
+        if(!m.matches()){
+            throw new IllegalArgumentException("le format n'est pas le bon");
+        }
 
+        
     }
 
 

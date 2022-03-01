@@ -14,7 +14,7 @@ class ColorTest {
     @BeforeEach
     void setUp() {
         color = new Color(300,300,-1);
-        color = new Color("#0000FF");
+        color = new Color("0000FF");
     }
 
     @Test
