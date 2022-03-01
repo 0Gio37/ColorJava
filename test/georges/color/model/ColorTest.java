@@ -11,16 +11,17 @@ class ColorTest {
 
     private Color color1;
     private Color color2;
+
     @BeforeEach
     void setUp() {
-        color1 = new Color(300,300,-1);
+        color1 = new Color(300,500,-1);
         color2 = new Color("0000FF");
     }
 
     @Test
     void testConstruc_3_arg(){
         assertEquals(300, color1.rouge,"valeur du constructeur non identique");
-        assertEquals(300, color1.vert, "valeur du constructeur non identique");
+        assertEquals(500, color1.vert, "valeur du constructeur non identique");
         assertEquals(-1, color1.bleu, "valeur du constructeur non identique");
     }
 
@@ -39,7 +40,7 @@ class ColorTest {
 
     @Test
     void testConstruc_StrArg(){
-        assertEquals("#0000FF", color2.hexa, "valeur du constructeur non identique");
+        assertEquals("0000FF", color2.hexa, "valeur du constructeur non identique");
     }
 
     @Test
@@ -48,8 +49,33 @@ class ColorTest {
     }
 
     @Test
-    void test_getRed(){
-        assertEquals(300,color1.rouge,"la valeur du rouge n'est pas récupérée");
+    void testGetRed(){
+        assertEquals(300,color1.getRed(),"la valeur du rouge n'est pas récupérée");
+    }
+
+    @Test
+    void testSetRed(){
+        assertEquals(400, color1.setRed(400),"la valeur du rouge n'a pas été setée");
+    }
+
+    @Test
+    void testGetGreen(){
+        assertEquals(500,color1.getGreen(),"la valeur du vert n'est pas récupérée");
+    }
+
+    @Test
+    void testSetGreen(){
+        assertEquals(100, color1.setGreen(100),"la valeur du vert n'a pas été setée");
+    }
+
+    @Test
+    void testGetBlue(){
+        assertEquals(-1,color1.getBlue(),"la valeur du bleu n'est pas récupérée");
+    }
+
+    @Test
+    void testSetBlue(){
+        assertEquals(50, color1.setBlue(50),"la valeur du bleu n'a pas été setée");
     }
 
 

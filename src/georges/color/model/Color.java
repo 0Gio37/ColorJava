@@ -52,8 +52,26 @@ public class Color {
 
     public int getRed(){
         return rouge;
-
     }
+    public int setRed(int newColor){
+        this.rouge = newColor;
+        return rouge;
+    }
+    public int getGreen(){
+        return vert;
+    }
+    public int setGreen(int newColor){
+        this.vert = newColor;
+        return vert;
+    }
+    public int getBlue(){
+        return bleu;
+    }
+    public int setBlue(int newColor){
+        this.bleu = newColor;
+        return bleu;
+    }
+
 
 
 
