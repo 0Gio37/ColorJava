@@ -44,7 +44,7 @@ class ColorTest {
 
     @Test
     void testValidStringConstruct_returnIllegalAgurmentException_if_incorrectFormat(){
-        assertThrows(IllegalArgumentException.class, () -> color.validStringConstructor(), "l'exception du format de la String n'est pas levée");
+        assertThrows(IllegalArgumentException.class, () -> color.validFormatConstructor(), "l'exception du format de la String n'est pas levée");
     }
 
 

@@ -43,14 +43,14 @@ public class Color {
     public void validFormatConstructor(){
         Pattern p;
         Matcher m;
-        p = Pattern.compile("^#[0-9]{4}[A-F]{2}");
+        p = Pattern.compile("^#[0-9A-F]{6}");
         m = p.matcher(hexa);
         if(!m.matches()){
             throw new IllegalArgumentException("le format n'est pas le bon");
         }
-
-
     }
+
+
 
 
 
