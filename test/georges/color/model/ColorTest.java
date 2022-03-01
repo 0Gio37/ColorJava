@@ -9,42 +9,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ColorTest {
 
-    private Color color;
-
+    private Color color1;
+    private Color color2;
     @BeforeEach
     void setUp() {
-        color = new Color(300,300,-1);
-        color = new Color("0000FF");
+        color1 = new Color(300,300,-1);
+        color2 = new Color("0000FF");
     }
 
     @Test
     void testConstruc_3_arg(){
-        assertEquals(300, color.rouge,"valeur du constructeur non identique");
-        assertEquals(300, color.vert, "valeur du constructeur non identique");
-        assertEquals(-1, color.bleu, "valeur du constructeur non identique");
+        assertEquals(300, color1.rouge,"valeur du constructeur non identique");
+        assertEquals(300, color1.vert, "valeur du constructeur non identique");
+        assertEquals(-1, color1.bleu, "valeur du constructeur non identique");
     }
 
     @Test
     void testValidArg_returnIllegalAgurmentException_if_rougeNot_between0_255(){
-        assertThrows(IllegalArgumentException.class, ()->color.validArgRouge(), "l'exception du range du rouge n'est pas levée");
+        assertThrows(IllegalArgumentException.class, ()->color1.validArgRouge(), "l'exception du range du rouge n'est pas levée");
     }
     @Test
     void testValidArg_returnIllegalAgurmentException_if_vertNot_between0_255(){
-        assertThrows(IllegalArgumentException.class, ()->color.validArgVert(), "l'exception du range du vert n'est pas levée");
+        assertThrows(IllegalArgumentException.class, ()->color1.validArgVert(), "l'exception du range du vert n'est pas levée");
     }
     @Test
     void testValidArg_returnIllegalAgurmentException_if_bleuNot_between0_255(){
-        assertThrows(IllegalArgumentException.class, ()->color.validArgBleu(), "l'exception du range du bleu n'est pas levée");
+        assertThrows(IllegalArgumentException.class, ()->color1.validArgBleu(), "l'exception du range du bleu n'est pas levée");
     }
 
     @Test
     void testConstruc_StrArg(){
-        assertEquals("#0000FF", color.hexa, "valeur du constructeur non identique");
+        assertEquals("#0000FF", color2.hexa, "valeur du constructeur non identique");
     }
 
     @Test
     void testValidStringConstruct_returnIllegalAgurmentException_if_incorrectFormat(){
-        assertThrows(IllegalArgumentException.class, () -> color.validFormatConstructor(), "l'exception du format de la String n'est pas levée");
+        assertThrows(IllegalArgumentException.class, () -> color2.validFormatConstructor(), "l'exception du format de la String n'est pas levée");
+    }
+
+    @Test
+    void test_getRed(){
+        assertEquals(300,color1.rouge,"la valeur du rouge n'est pas récupérée");
     }
 
 

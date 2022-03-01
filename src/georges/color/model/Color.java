@@ -50,6 +50,11 @@ public class Color {
         }
     }
 
+    public int getRed(){
+        return rouge;
+
+    }
+
 
 
 
