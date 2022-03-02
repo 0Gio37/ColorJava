@@ -72,9 +72,9 @@ public class Color {
         return this.bleu;
     }
 
-    public boolean validRangeColor(int color){
+    public boolean validRangeColor(String nameColor,int color){
         if (color < 0 || color > 255) {
-            throw new IllegalArgumentException("la couleur n'est pas un chiffre compris entre 0 et 255");
+            throw new IllegalArgumentException("la couleur "+ nameColor +" n'est pas un chiffre compris entre 0 et 255");
         }
         return true;
     }
@@ -96,8 +96,9 @@ public class Color {
         return rouge;
     }
     public void setRed(int newColor){
-        if(validRangeColor(newColor)){
+        if(validRangeColor("rouge", newColor)){
             this.rouge = newColor;
+            convertRGBInHexa(rouge,vert,bleu);
 
         }
     }
@@ -106,8 +107,9 @@ public class Color {
         return vert;
     }
     public void setGreen(int newColor){
-        if(validRangeColor(newColor)){
+        if(validRangeColor("vert", newColor)){
             this.vert = newColor;
+            convertRGBInHexa(rouge,vert,bleu);
         }
     }
 
@@ -115,8 +117,9 @@ public class Color {
         return bleu;
     }
     public void setBlue(int newColor){
-        if(validRangeColor(newColor)){
+        if(validRangeColor("bleu", newColor)){
             this.bleu = newColor;
+            convertRGBInHexa(rouge,vert,bleu);
 
         }
     }
@@ -127,6 +130,7 @@ public class Color {
   public void setHexValue(String newValue){
     if(validFormatHexaValue(newValue)) {
         this.hexa = newValue;
+        convertHexaInRGB(newValue);
     }
   }
 

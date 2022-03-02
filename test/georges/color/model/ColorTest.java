@@ -44,8 +44,8 @@ class ColorTest {
 
     @Test
     void test_Method_illegalExcep_for_color_outOfRange(){
-        assertThrows(IllegalArgumentException.class, () -> color.validRangeColor(400),"Exception range non levée");
-        assertThrows(IllegalArgumentException.class, () -> color.validRangeColor(-10),"Exception range non levée");
+        assertThrows(IllegalArgumentException.class, () -> color.validRangeColor("test", 400),"Exception range non levée");
+        assertThrows(IllegalArgumentException.class, () -> color.validRangeColor("test", -10),"Exception range non levée");
     }
 
     @Test
@@ -124,42 +124,58 @@ class ColorTest {
     }
 
     @Test
-    void test_setRed_update_Redvalue_and_hexaValue() {
-        color.setRed(75);
-        assertAll("object non conforme",
-                () -> assertThrows(IllegalArgumentException.class, () -> color.setBlue(400),"exception non levée"),
-                () -> assertEquals(75,color.getRed(),"Le setter du rouge n'a pas fonctionné"),
-                () -> assertEquals(100,color.getGreen(),"la valeur du rouge n'est pas récupérée"),
-                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée"),
-                () -> assertEquals("#3264C8",color.getHexValue(),"la valeur du rouge n'est pas récupérée")
-        );
-    }
-
-    @Test
     void test_IllegalException_if_wrong_format_hexaValue(){
         assertThrows(IllegalArgumentException.class, () -> color.setHexValue("193264"));
     }
 
     @Test
     void test_set_hexaValue(){
-        color.setHexValue("#193264");
-        assertEquals("#193264", color.getHexValue(),"le setter de l'hexa n'a pas fonctionné ");
+        color.setHexValue("#C8C8C8");
+        assertAll("object non conforme",
+                ()-> assertEquals("#C8C8C8", color.getHexValue(),"le setter de l'hexa n'a pas fonctionné "),
+                () -> assertEquals(200,color.getRed(),"Le setter du rouge n'a pas fonctionné"),
+                () -> assertEquals(200,color.getGreen(),"la valeur du rouge n'est pas récupérée"),
+                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée")
+                );
     }
 
-    //TODO
-    /*
-    update chaque couleur apres set de l'hexa'
-    updtate hexa apres changement pour chacunes des 3 couleurs
-    */
+    @Test
+    void test_setColor_Red(){
+        color.setRed(10);
+        assertAll("object non conforme",
+                ()-> assertEquals("#0A64C8", color.getHexValue(),"la valeur de l'hexa n'a pas fonctionné "),
+                () -> assertEquals(10,color.getRed(),"la valeur du rouge n'a pas fonctionné"),
+                () -> assertEquals(100,color.getGreen(),"la valeur du vert n'est pas récupérée"),
+                () -> assertEquals(200,color.getBlue(),"la valeur du bleu n'est pas récupérée")
+        );
+    }
 
+    @Test
+    void test_setColor_Green(){
+        color.setGreen(10);
+        assertAll("object non conforme",
+                ()-> assertEquals("#320AC8", color.getHexValue(),"la valeur de l'hexa n'a pas fonctionné "),
+                () -> assertEquals(50,color.getRed(),"la valeur du rouge n'a pas fonctionné"),
+                () -> assertEquals(10,color.getGreen(),"la valeur du vert n'est pas récupérée"),
+                () -> assertEquals(200,color.getBlue(),"la valeur du bleu n'est pas récupérée")
+        );
+    }
+
+    @Test
+    void test_setColor_Blue(){
+        color.setBlue(10);
+        assertAll("object non conforme",
+                ()-> assertEquals("#32640A", color.getHexValue(),"la valeur de l'hexa n'a pas fonctionné "),
+                () -> assertEquals(50,color.getRed(),"la valeur du rouge n'a pas fonctionné"),
+                () -> assertEquals(100,color.getGreen(),"la valeur du vert n'est pas récupérée"),
+                () -> assertEquals(10,color.getBlue(),"la valeur du bleu n'est pas récupérée")
+        );
+    }
 
     @Test
     void test_toString_Methode(){
         assertEquals("[value=#3264C8, r=50, g=100, b=200]", color.toString(),"le message de sortie n'est pas correct");
     }
-
-
-
-
+    
 
 }
