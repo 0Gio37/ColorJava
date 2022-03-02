@@ -97,6 +97,7 @@ public class Color {
     public void setRed(int newColor){
         if(validRangeColor(newColor)){
             this.rouge = newColor;
+
         }
     }
 
@@ -115,6 +116,7 @@ public class Color {
     public void setBlue(int newColor){
         if(validRangeColor(newColor)){
             this.bleu = newColor;
+
         }
     }
 

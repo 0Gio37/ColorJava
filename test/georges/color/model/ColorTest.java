@@ -48,7 +48,18 @@ class ColorTest {
         assertThrows(IllegalArgumentException.class, () -> color.validRangeColor(-10),"Exception range non levée");
     }
 
-
+    @Test
+    void testGetRed(){
+        assertEquals(50,color.getRed(),"la valeur du rouge n'est pas récupérée");
+    }
+    @Test
+    void testGetGreen(){
+        assertEquals(100,color.getGreen(),"la valeur du vert n'est pas récupérée");
+    }
+    @Test
+    void testGetBlue(){
+        assertEquals(200,color.getBlue(),"la valeur du bleu n'est pas récupérée");
+    }
 
     @Test
     void test_illegalException_if_setRedColor_out(){
@@ -56,7 +67,8 @@ class ColorTest {
                 () -> assertThrows(IllegalArgumentException.class, () -> color.setRed(-10),"exception non levée"),
                 () -> assertEquals(50,color.getRed(),"la valeur du rouge n'est pas récupérée"),
                 () -> assertEquals(100,color.getGreen(),"la valeur du rouge n'est pas récupérée"),
-                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée")
+                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée"),
+                () -> assertEquals("#3264C8",color.getHexValue(),"la valeur du rouge n'est pas récupérée")
                 );
     }
 
@@ -66,89 +78,62 @@ class ColorTest {
                 () -> assertThrows(IllegalArgumentException.class, () -> color.setGreen(-10),"exception non levée"),
                 () -> assertEquals(50,color.getRed(),"la valeur du rouge n'est pas récupérée"),
                 () -> assertEquals(100,color.getGreen(),"la valeur du rouge n'est pas récupérée"),
-                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée")
+                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée"),
+                () -> assertEquals("#3264C8",color.getHexValue(),"la valeur du rouge n'est pas récupérée")
         );
     }
 
     @Test
     void test_illegalException_if_setBlueColor_out(){
         assertAll("object non conforme",
-                () -> assertThrows(IllegalArgumentException.class, () -> color.setBlue(-10),"exception non levée"),
+                () -> assertThrows(IllegalArgumentException.class, () -> color.setBlue(400),"exception non levée"),
                 () -> assertEquals(50,color.getRed(),"la valeur du rouge n'est pas récupérée"),
                 () -> assertEquals(100,color.getGreen(),"la valeur du rouge n'est pas récupérée"),
-                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée")
+                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée"),
+                () -> assertEquals("#3264C8",color.getHexValue(),"la valeur du rouge n'est pas récupérée")
         );
-    }
-
-
-
-
-
-
-
-
-    @Test
-    void testConstruc_hexa(){
-        assertThrows(IllegalArgumentException.class, () -> color = new Color("0000PP"));
-    }
-
-
-
-
-    @Test
-    void testGetRed(){
-        assertEquals(300,color.getRed(),"la valeur du rouge n'est pas récupérée");
-    }
-
-    @Test
-    void testSetRed() {
-        color.setRed(200);
-        assertAll("objet non conforme",
-                () -> assertEquals(200, color.getRed(), "le get du rouge apres son set n'a pas la bonne valeur "),
-                () -> assertEquals(45, color.getBlue()),
-                () -> assertEquals(100, color.getGreen()),
-                () -> assertEquals("#C8642D",color.getHexValue())
-        );
-
-        //assertEquals(400, color.setRed(400), "la valeur du rouge n'a pas été setée");
     }
 
     @Test
     void testSetRed_with_wrong_value_range_bigger_than_255(){
         assertThrows(IllegalArgumentException.class, () -> color.setRed(400));
     }
-
     @Test
     void testSetRed_with_wrong_value_range_smaller_than_0(){
         assertThrows(IllegalArgumentException.class, () -> color.setRed(-1));
     }
-
-
     @Test
-    void testGetGreen(){
-        assertEquals(500,color.getGreen(),"la valeur du vert n'est pas récupérée");
+    void testSetGreen_with_wrong_value_range_bigger_than_255(){
+        assertThrows(IllegalArgumentException.class, () -> color.setGreen(400));
+    }
+    @Test
+    void testSetGreen_with_wrong_value_range_smaller_than_0(){
+        assertThrows(IllegalArgumentException.class, () -> color.setGreen(-1));
+    }
+    @Test
+    void testSetBlue_with_wrong_value_range_bigger_than_255(){
+        assertThrows(IllegalArgumentException.class, () -> color.setBlue(400));
+    }
+    @Test
+    void testSetBlue_with_wrong_value_range_smaller_than_0(){
+        assertThrows(IllegalArgumentException.class, () -> color.setBlue(-1));
     }
 
     @Test
-    void testSetGreen(){
-        color.setGreen(100);
-        assertAll("objet non conforome",
-                () -> assertEquals(100,color.getGreen(),"le get du vert apres son set n'a pas la bonne valeur "));
-        //assertEquals(100, color.setGreen(100),"la valeur du vert n'a pas été setée");
-    }
-
-    @Test
-    void testGetBlue() {
-        assertEquals(-1, color.getBlue(), "la valeur du bleu n'est pas récupérée");
-    }
-
-    @Test
-    void testSetBlue(){
-        color.setBlue(20);
+    void test_setRed_update_Redvalue_and_hexaValue() {
+        color.setRed(75);
         assertAll("object non conforme",
-               // () -> assertEquals(50, color.setBlue(50),"la valeur du bleu n'a pas été setée"),
-                () -> assertEquals(20,color.getBlue(),"le get du bleu apres son set n'a pas la bonne valeur "));
+                () -> assertThrows(IllegalArgumentException.class, () -> color.setBlue(400),"exception non levée"),
+                () -> assertEquals(75,color.getRed(),"Le setter du rouge n'a pas fonctionné"),
+                () -> assertEquals(100,color.getGreen(),"la valeur du rouge n'est pas récupérée"),
+                () -> assertEquals(200,color.getBlue(),"la valeur du rouge n'est pas récupérée"),
+                () -> assertEquals("#3264C8",color.getHexValue(),"la valeur du rouge n'est pas récupérée")
+        );
     }
+
+
+
+
 
     @Test
     void testGetHexavalue(){
