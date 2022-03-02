@@ -124,15 +124,17 @@ public class Color {
         }
     }
 
-  public String getHexValue(){
+    public String getHexValue(){
         return hexa;
-  }
-  public void setHexValue(String newValue){
-    if(validFormatHexaValue(newValue)) {
-        this.hexa = newValue;
-        convertHexaInRGB(newValue);
     }
-  }
+    public void setHexValue(String newValue){
+        if(newValue == null){
+            throw new IllegalArgumentException("le format hexa n'est pas le bon");
+        }else if (validFormatHexaValue(newValue)) {
+            this.hexa = newValue;
+            convertHexaInRGB(newValue);
+        }
+    }
 
     @Override
     public String toString() {
