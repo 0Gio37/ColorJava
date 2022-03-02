@@ -22,18 +22,8 @@ public class Color {
         convertRGBInHexa(rouge,vert,bleu);
     }
 
-
     public Color(String hexa){
-        Pattern p;
-        Matcher m;
-        p = Pattern.compile("^#[0-9A-F]{6}");
-        m = p.matcher(hexa);
-        if(!m.matches()){
-            throw new IllegalArgumentException("le format hexa n'est pas le bon");
-        }else{
-            convertHexaInRGB(hexa);
-            this.hexa = hexa;
-        }
+        setHexValue(hexa);
     }
 
     public String convertRGBInHexa(int rouge, int vert, int bleu){
@@ -89,6 +79,17 @@ public class Color {
         return true;
     }
 
+    public boolean validFormatHexaValue(String hexaValue){
+        Pattern p;
+        Matcher m;
+        p = Pattern.compile("^#[0-9A-F]{6}");
+        m = p.matcher(hexaValue);
+        if(!m.matches()){
+            throw new IllegalArgumentException("le format hexa n'est pas le bon");
+        }
+        return true;
+    }
+
 
 
     public int getRed(){
@@ -123,19 +124,19 @@ public class Color {
   public String getHexValue(){
         return hexa;
   }
-
-  public String setHexValue(String newValue){
+  public void setHexValue(String newValue){
+    if(validFormatHexaValue(newValue)) {
         this.hexa = newValue;
-        return hexa;
+    }
   }
 
     @Override
     public String toString() {
-        return "Color{" +
-                "rouge=" + rouge +
-                ", vert=" + vert +
-                ", bleu=" + bleu +
-                ", hexa='" + hexa + '\'' +
-                '}';
+        return "[value="
+                + hexa
+                +", r=" + rouge
+                +", g=" + vert
+                +", b=" + bleu +
+                "]";
     }
 }

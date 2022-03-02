@@ -60,6 +60,10 @@ class ColorTest {
     void testGetBlue(){
         assertEquals(200,color.getBlue(),"la valeur du bleu n'est pas récupérée");
     }
+    @Test
+    void testGetHexavalue(){
+        assertEquals("#3264C8", color.getHexValue(), "la valeur de l'hexa n'est pas récupérée");
+    }
 
     @Test
     void test_illegalException_if_setRedColor_out(){
@@ -131,23 +135,27 @@ class ColorTest {
         );
     }
 
-
-
-
-
     @Test
-    void testGetHexavalue(){
-        assertEquals("0000FF", color.getHexValue(), "la valeur de l'hexa n'est pas récupérée");
+    void test_IllegalException_if_wrong_format_hexaValue(){
+        assertThrows(IllegalArgumentException.class, () -> color.setHexValue("193264"));
     }
 
     @Test
-    void testSetHexaValue(){
-        assertEquals("#00FF00", color.setHexValue("#00FF00"),"le get de l'hexa apres son set n'a pas la bonne valeur ");
+    void test_set_hexaValue(){
+        color.setHexValue("#193264");
+        assertEquals("#193264", color.getHexValue(),"le setter de l'hexa n'a pas fonctionné ");
     }
+
+    //TODO
+    /*
+    update chaque couleur apres set de l'hexa'
+    updtate hexa apres changement pour chacunes des 3 couleurs
+    */
+
 
     @Test
     void test_toString_Methode(){
-        assertEquals("value=#0000FF", color.toString(),"le message de sortie n'est pas correct");
+        assertEquals("[value=#3264C8, r=50, g=100, b=200]", color.toString(),"le message de sortie n'est pas correct");
     }
 
 
