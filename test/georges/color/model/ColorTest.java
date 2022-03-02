@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 // MA CLASSE  DE TESTS : 100% réussi
+/*
 class ColorTest {
 
     private Color color;
@@ -180,10 +181,12 @@ class ColorTest {
 }
 
 
+ */
+
 
 
 // CLASS DE TESTS DE PETER : 100% réussi
-/*
+
 class ColorTest {
 
     // [value=#D58D35, r=213, g=141, b=53]
@@ -451,5 +454,4 @@ class ColorTest {
     }
 }
 
-*/
 

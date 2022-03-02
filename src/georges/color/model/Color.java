@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 
 public class Color {
 
+    private final static int MIN_VALUE = 0;
+    private final static int MAX_VALUE = 255;
+
     private final static char[] VALUES = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
             'F' };
     private char[] tabChar;
@@ -47,9 +50,26 @@ public class Color {
         tabChar[3] = hexa.charAt(4);
         tabChar[4] = hexa.charAt(5);
         tabChar[5] = hexa.charAt(6);
-        upDatehexaInRGBforRed(tabChar[0], tabChar[1]);
-        upDatehexaInRGBforGreen(tabChar[2],tabChar[3]);
-        upDatehexaInRGBforBlue(tabChar[4],tabChar[5]);
+
+        updatehexaInRGBcolor("rouge", tabChar[0], tabChar[1]);
+        updatehexaInRGBcolor("vert", tabChar[2],tabChar[3]);
+        updatehexaInRGBcolor("bleu", tabChar[4],tabChar[5]);
+    }
+
+    public int updatehexaInRGBcolor(String colorName, char col1, char col2){
+        int color = indexOf(col1) * 16 + indexOf(col2);
+        switch (colorName){
+            case "rouge" :
+                this.rouge = color;
+                return this.rouge;
+            case "vert" :
+                this.vert = color;
+                return this.vert;
+            case "bleu" :
+                this.bleu = color;
+                return this.bleu;
+        }
+        return 0;
     }
 
     private int indexOf(char charValue) {
@@ -59,21 +79,9 @@ public class Color {
         throw new IllegalArgumentException();
     }
 
-    public int upDatehexaInRGBforRed(char red1, char red2){
-        this.rouge = indexOf(red1) * 16 + indexOf(red2);
-        return this.rouge;
-    }
-    public int upDatehexaInRGBforGreen(char green3, char green4){
-        this.vert = indexOf(green3) * 16 + indexOf(green4);
-        return this.vert;
-    }
-    public int upDatehexaInRGBforBlue(char blue5, char blue6){
-        this.bleu = indexOf(blue5) * 16 + indexOf(blue6);
-        return this.bleu;
-    }
 
     public boolean validRangeColor(String nameColor,int color){
-        if (color < 0 || color > 255) {
+        if (color < MIN_VALUE || color > MAX_VALUE) {
             throw new IllegalArgumentException("la couleur "+ nameColor +" n'est pas un chiffre compris entre 0 et 255");
         }
         return true;
@@ -89,9 +97,7 @@ public class Color {
         }
         return true;
     }
-
-
-
+    
     public int getRed(){
         return rouge;
     }
