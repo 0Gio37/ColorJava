@@ -97,7 +97,7 @@ public class Color {
         }
         return true;
     }
-    
+
     public int getRed(){
         return rouge;
     }

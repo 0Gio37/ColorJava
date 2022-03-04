@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ColorJava:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ColorJava_jar</output-path>
+    <root id="archive" name="ColorJava.jar">
+      <element id="file-copy" path="$PROJECT_DIR$/out/production/ColorJava/georges/color/model/Color.class" />
+    </root>
+  </artifact>
+</component>
